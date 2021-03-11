@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "/home/elizio/.dotnet/store/|arch|/|tfm|",
+      "/home/elizio/.nuget/packages"
+    ]
+  }
+}
