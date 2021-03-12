@@ -22,20 +22,22 @@ namespace DIO.Bank
                     case "2":
                         InserirConta();
                         break;
-                    case "3":
-                        Transferir();
-                        break;
-                    case "4":
-                        Sacar();
-                        break;
-                    case "5":
-                        Depositar();
-                        break;
+                     case "3":
+                         Transferir();
+                         break;
+                     case "4":
+                         Sacar();
+                         break;
+                     case "5":
+                         Depositar();
+                         break;
                     case "C":
                         Console.Clear();
                         break;
 
                     default:
+                        
+                        //Console.WriteLine("Valor Informado invalido");
                         throw new ArgumentOutOfRangeException();
 
                 }
@@ -46,6 +48,58 @@ namespace DIO.Bank
             Console.ReadLine();
         }
 
+        private static void Transferir()
+        {
+            Console.Write("Digite o número da conta de origem: ");
+            int indiceContaOrigem = int.Parse(Console.ReadLine());
+
+            Console.Write("Digite o número da conta de destino: ");
+            int indiceContaDestino = int.Parse(Console.ReadLine());
+            Console.Write("Digite o valor a ser transferido: ");
+            double valorTransferencia = double.Parse(Console.ReadLine());
+
+            listContas[indiceContaOrigem].Transferir(valorTransferencia, listContas[indiceContaDestino]);
+        }
+
+        private static void Depositar()
+        {
+            Console.Write("Digite o número da conta: ");
+            int indiceConta = int.Parse(Console.ReadLine());
+
+            Console.Write("Digite o valor a ser depositado: ");
+            double valorDeposito = double.Parse(Console.ReadLine());
+
+            listContas[indiceConta].Depositar(valorDeposito);
+        }
+
+        private static void Sacar()
+        {
+            Console.Write("Digite o número da conta: ");
+            int indiceConta = int.Parse(Console.ReadLine());
+
+            Console.Write("Digite o valor a ser sacado: ");
+            double valorSaque = double.Parse(Console.ReadLine());
+
+            listContas[indiceConta].Sacar(valorSaque);
+        }
+
+        private static void ListarContas()
+        {
+            Console.WriteLine("Listar contas");
+
+            if (listContas.Count == 0)
+            {
+                Console.WriteLine("Nenhuma conta cadastrada!");
+                return;
+            }
+
+            for (int i = 0; i < listContas.Count; i++)
+            {
+                //Conta conta = listContas[i]; Popular e listar contas???? Formato alerado
+                Console.Write("#{0} - ", i);
+                Console.WriteLine(listContas[i]);
+            }
+        }
         private static void InserirConta()
         {
             Console.WriteLine("Inserir nova conta");
